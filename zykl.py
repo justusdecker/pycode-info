@@ -110,7 +110,7 @@ def get_hotspots_for(filepath: str, max_complexity) -> dict:
     with open(filepath) as f:
         return get_hotspots_by_complexity(f.read(), max_complexity)
 
-def print_code_heatmap(filepath, pok: bool = False, max_complexity: int = 4):
+def print_code_heatmap(filepath, pok: bool = False, max_complexity: int = 10):
     
     complexities = get_hotspots_for(filepath, max_complexity)
     if "error" in complexities:
