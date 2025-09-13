@@ -144,5 +144,3 @@ def analyze_all_files_in_workspace():
                 full_path = os.path.join(root, file)
                 if print_code_heatmap(full_path):
                     input('Press <ENTER> to continue')
-
-analyze_all_files_in_workspace()
