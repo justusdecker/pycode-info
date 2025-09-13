@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "pycode-info"
+version = "0.1.0"
+description = "A tool to analyze Python code complexity and style."
+authors = [
+    { name = "Justus", email = "justus.d2025@gmail.com" }
+]
+dependencies = [
+    "flake8",
+]
+
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+[project.urls]
+homepage = "https://github.com/justusdecker/pycode-info"
+

@@ -17,8 +17,8 @@ EPILOG = "Developed by Justus Decker. - 2025. License: MIT. All rights reserved.
 
 if __name__ == "__main__":
 
-    from src.ccv import print_code_heatmap, analyze_all_files_in_workspace
-    from src.lang_info import print_language_summary
+    from src.pycode_info.ccv import print_code_heatmap, analyze_all_files_in_workspace
+    from src.pycode_info.lang_info import print_language_summary
     import argparse
     parser = argparse.ArgumentParser(description=DESCRIPTION, epilog=EPILOG)
     parser.add_argument('function', choices=['heatmap', 'summary'])
