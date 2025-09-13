@@ -69,7 +69,12 @@ class HotSpotVisitor(ast.NodeVisitor):
             self.complexities[self.current_function]['complexity'] += 1
         self.generic_visit(node)
 
-def calculate_cyclomatic_complexity(code_string):
+def calculate_cyclomatic_complexity(code_string) -> int:
+    """
+    Calculate the cyclomatic complexity of a given Python code string.
+    Returns the complexity as an integer.
+    Returns -1 if the code cannot be parsed.
+    """
     try:
         tree = ast.parse(code_string)
         visitor = ComplexityVisitor()
@@ -79,6 +84,11 @@ def calculate_cyclomatic_complexity(code_string):
         return -1
 
 def get_hotspots_by_complexity(code_string, max_complexity):
+    """
+    Get functions in the code string that exceed the specified cyclomatic complexity.
+    Returns a dictionary of function names with their complexity and line numbers.
+    Returns {"error": "Invalid Python code"} if the code cannot be parsed.
+    """
     try:
         tree = ast.parse(code_string)
         visitor = HotSpotVisitor()
@@ -93,11 +103,20 @@ def get_hotspots_by_complexity(code_string, max_complexity):
         return {"error": "Invalid Python code"}
 
 def get_complexity_for(filepath: str) -> str | int:
+    """
+    Reads a Python file
+    Get the cyclomatic complexity for a given Python file.
+    Returns the complexity as an integer.
+    """
     with open(filepath) as f:
         return calculate_cyclomatic_complexity(f.read())
 
 def print_hotspots_for(filepath: str) -> dict:
-
+    """
+    Display functions in the given Python file that exceed a certain cyclomatic complexity.
+    Prints the function name, complexity, and line numbers.
+    Returns a dictionary of hotspots.
+    """
     hotspots = get_hotspots_for(filepath)
     if hotspots:
         for func, data in hotspots.items():
@@ -111,7 +130,10 @@ def get_hotspots_for(filepath: str, max_complexity) -> dict:
         return get_hotspots_by_complexity(f.read(), max_complexity)
 
 def print_code_heatmap(filepath, pok: bool = False, max_complexity: int = 10):
-    
+    """
+    Display a heatmap of code complexity for a given Python file.
+    Lines with complexity above the max_complexity threshold are highlighted.
+    """
     complexities = get_hotspots_for(filepath, max_complexity)
     if "error" in complexities:
         print(f"ParseError: {complexities['error']}")
@@ -138,6 +160,10 @@ def print_code_heatmap(filepath, pok: bool = False, max_complexity: int = 10):
     return has_problem
 
 def analyze_all_files_in_workspace():
+    """
+    Analyze all Python files in the current workspace and print a complexity heatmap for each.
+    Prompts the user to press <ENTER> to continue after each file with complexity issues.
+    """
     for root, dirs, files in os.walk('./'):
         for file in files:
             if file.endswith('.py'):
