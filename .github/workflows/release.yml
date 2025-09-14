@@ -50,9 +50,12 @@ jobs:
         with:
           name: dist
           path: dist/
+      - name: Get Version number
+        id: get_version
+        run: echo "VERSION=$(python -c 'import src.pycode_info; print(src.pycode_info.__version__)')" >> $PVERSION
       - name: Create GitHub Release
         id: create_release
         env:
           GH_TOKEN: ${{ github.token }}
         run:
-          gh release create v${{ env.PACKAGE_NAME }}-${{ github.run_number }} --title "Release ${{ env.PACKAGE_NAME }}-${{ github.run_number }}" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-${{ github.run_number }}" --draft=false --prerelease=false
+          gh release create v${{ env.PACKAGE_NAME }}-$PVERSION --title "v${{ env.PACKAGE_NAME }}-$PVERSION" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-$PVERSION" --draft=false --prerelease=false
