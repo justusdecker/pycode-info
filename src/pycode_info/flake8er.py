@@ -60,7 +60,7 @@ def print_flake8_report(
                 last_line = line
                 print("-"*50)
 
-            if line > 200:
+            if line > truncate:
                 print("... (truncated)")
                 break
 
