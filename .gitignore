@@ -3,3 +3,4 @@
 .env
 dist/*
 src/pycode_info.egg-info/*
+flake8_report.json
