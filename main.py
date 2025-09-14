@@ -1,10 +1,4 @@
 
-"""
--e=.dll;.i
--e exclude
--ff forbidden folders - not the exact path - .git will remove all filepaths that contains .git: .git / .github etc.
-"""
-
 # Coming soon
 
 DESCRIPTION = """
@@ -14,11 +8,14 @@ Language summary and file statistics included.
 EPILOG = "Developed by Justus Decker. - 2025. License: MIT. All rights reserved."
 
 
-if __name__ == "__main__":
 
+
+if __name__ == "__main__":
+    import sys
+    sys.argv.append('flake8')
     from src.pycode_info.ccv import print_code_heatmap, analyze_all_files_in_workspace
     from src.pycode_info.lang_info import print_language_summary
-    from src.pycode_info.flake8er import anayze_files
+    from src.pycode_info.flake8er import print_flake8_report
     import argparse
     parser = argparse.ArgumentParser(description=DESCRIPTION, epilog=EPILOG)
     parser.add_argument('function', choices=['heatmap', 'summary', 'flake8'], help='Function to execute')
@@ -29,4 +26,4 @@ if __name__ == "__main__":
     elif args.function == 'summary':
         print_language_summary()
     elif args.function == 'flake8':
-        anayze_files()
+        print_flake8_report(line_sep=False)

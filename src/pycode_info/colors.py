@@ -59,6 +59,24 @@ LANGUAGE_COLOR = {
     'LICENSE': '#cccccc',
 }
 
+ERROR_TO_COLOR_MAPPER = {
+    'E': '#FF0000',  # Red for errors
+    'W': '#FFA500',  # Orange for warnings
+    'F': '#FFFF00',  # Yellow for formatting issues
+    'C': '#0000FF',  # Blue for complexity issues
+    'N': '#008000',  # Green for naming issues
+    'D': '#800080',  # Purple for docstring issues
+    'I': '#00FFFF',  # Cyan for import issues
+    'T': '#FFC0CB',  # Pink for type issues
+    'S': '#A52A2A',  # Brown for security issues
+    'R': '#808080',  # Gray for refactor suggestions
+    'Q': '#000000',  # Black for quality issues
+    'X': '#FFFFFF',  # White for unknown issues
+    
+}
+
+
+
 def convert_hex_to_escsq(hex_color: str) -> str:
     """
     Convert a hex color code to an ANSI escape sequence for terminal output.
