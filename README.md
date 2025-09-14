@@ -6,6 +6,10 @@
 ### Language Percentage
 <img width="1100" height="225" alt="fancystuff" src="https://github.com/user-attachments/assets/65f29165-e20f-4347-b14e-157c24024935" />
 
+### Code Check
+
+<img width="1387" height="634" alt="fancystuff3" src="https://github.com/user-attachments/assets/74817ea5-34bd-4cb1-ab74-3feae6bc4880" />
+
 ### Cyclomatic Complexity Viewer
 <img width="985" height="751" alt="overly_complex" src="https://github.com/user-attachments/assets/e9917cfb-7da3-4658-9d2c-07b7d25a37cd" />
 
