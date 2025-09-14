@@ -1,62 +1,102 @@
 # Pycode-Info
 
+**Pycode-Info** is a Python toolkit for analyzing codebases. It provides language statistics, code complexity heatmaps, and integrates with Flake8 for linting reports. The tool is designed to help developers quickly understand the structure and quality of their code.
 
-## Code Statistics
+---
+
+## Features
+
+- **Language Statistics:**  
+  Summarizes the programming languages in your project, showing file counts, total size, and line counts per language with a visual usage bar.
+
+- **Cyclomatic Complexity Viewer:**  
+  Analyzes Python files for cyclomatic complexity, highlighting complex functions and providing a heatmap of code complexity.
+
+- **Flake8 Integration:**  
+  Runs Flake8 on all Python files and summarizes errors and warnings in a readable format.
+
+---
+
+## Example Outputs
 
 ### Language Percentage
-<img width="1120" height="223" alt="fancystuff2" src="https://github.com/user-attachments/assets/cce5a4da-c5ba-48ae-9628-b6af34bdfc5f" />
+
+![Language Percentage](https://github.com/user-attachments/assets/cce5a4da-c5ba-48ae-9628-b6af34bdfc5f)
 
 ### Code Check
-<img width="1387" height="634" alt="fancystuff3" src="https://github.com/user-attachments/assets/74817ea5-34bd-4cb1-ab74-3feae6bc4880" />
+
+![Code Check](https://github.com/user-attachments/assets/74817ea5-34bd-4cb1-ab74-3feae6bc4880)
 
 ### Cyclomatic Complexity Viewer
-<img width="985" height="751" alt="overly_complex" src="https://github.com/user-attachments/assets/e9917cfb-7da3-4658-9d2c-07b7d25a37cd" />
 
-### Flake8_report.json
+![Cyclomatic Complexity Viewer](https://github.com/user-attachments/assets/e9917cfb-7da3-4658-9d2c-07b7d25a37cd)
 
-This will be used to show you errors & warnings
+---
+
+## Flake8 Report Example
+
+The Flake8 report summarizes errors and warnings in your codebase:
 
 ```json
 {
     "./main.py": [
         {
-            "file": "./main.py",
             "line_number": 5,
             "column_number": 80,
-            "text": "line too long (115 > 79 characters)"
+            "text": "line too long (115 > 79 characters)",
+            "code": "E501"
         },
         {
-            "file": "./main.py",
             "line_number": 14,
             "column_number": 80,
-            "text": "line too long (81 > 79 characters)"
-        },
-        {
-            "file": "./main.py",
-            "line_number": 19,
-            "column_number": 5,
-            "text": "'src.pycode_info.ccv.print_code_heatmap' imported but unused"
-        },
-        {
-            "file": "./main.py",
-            "line_number": 19,
-            "column_number": 80,
-            "text": "line too long (86 > 79 characters)"
-        },
-        {
-            "file": "./main.py",
-            "line_number": 24,
-            "column_number": 80,
-            "text": "line too long (105 > 79 characters)"
+            "text": "line too long (81 > 79 characters)",
+            "code": "E501"
         }
     ]
 }
 ```
 
-## Upcoming
+---
 
-- Logical Lines: Only lines are counted that contains code
-- Comment Lines: Only lines are counter that contains comments
--hotspot gatherer: gets the most edited files
-- Added / Removed lines
-- cyclomatic complexity viewer
+## Usage
+
+### Command Line
+
+Run the tool from your project root:
+
+```sh
+python main.py summary      # Show language statistics
+python main.py heatmap      # Show cyclomatic complexity heatmap for all Python files
+python main.py flake8       # Run Flake8 and print a summary report
+```
+
+### As a Module
+
+You can also use the main features in your own scripts:
+
+```py
+from pycode_info.lang_info import print_language_summary
+from pycode_info.ccv import analyze_all_files_in_workspace
+from pycode_info.flake8er import print_flake8_report
+
+print_language_summary()
+analyze_all_files_in_workspace()
+print_flake8_report()
+```
+
+---
+
+## Upcoming Features
+
+- **Logical Lines:** Count only lines containing code.
+- **Comment Lines:** Count only lines containing comments.
+- **Hotspot Gatherer:** Identify the most edited files.
+- **Added/Removed Lines:** Track code churn.
+- **Cyclomatic Complexity Viewer:** Enhanced visualization and reporting.
+
+---
+
+## License
+
+MIT License  
+Developed by Justus Decker - Copyright 2025
