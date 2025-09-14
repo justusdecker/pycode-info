@@ -52,7 +52,9 @@ jobs:
           path: dist/
       - name: Get Version number
         id: get_version
-        run: echo "VERSION=$(python -c 'import src.pycode_info; print(src.pycode_info.__version__)')" >> $PVERSION
+        run: |
+          PVERSION="versions.env"
+          echo "VERSION=$(python -c 'import src.pycode_info; print(src.pycode_info.__version__)')" >> $PVERSION
       - name: Create GitHub Release
         id: create_release
         env:
