@@ -9,7 +9,46 @@
 ### Cyclomatic Complexity Viewer
 <img width="985" height="751" alt="overly_complex" src="https://github.com/user-attachments/assets/e9917cfb-7da3-4658-9d2c-07b7d25a37cd" />
 
+### Flake8_report.json
 
+This will be used to show you errors & warnings
+
+```json
+{
+    "./main.py": [
+        {
+            "file": "./main.py",
+            "line_number": 5,
+            "column_number": 80,
+            "text": "line too long (115 > 79 characters)"
+        },
+        {
+            "file": "./main.py",
+            "line_number": 14,
+            "column_number": 80,
+            "text": "line too long (81 > 79 characters)"
+        },
+        {
+            "file": "./main.py",
+            "line_number": 19,
+            "column_number": 5,
+            "text": "'src.pycode_info.ccv.print_code_heatmap' imported but unused"
+        },
+        {
+            "file": "./main.py",
+            "line_number": 19,
+            "column_number": 80,
+            "text": "line too long (86 > 79 characters)"
+        },
+        {
+            "file": "./main.py",
+            "line_number": 24,
+            "column_number": 80,
+            "text": "line too long (105 > 79 characters)"
+        }
+    ]
+}
+```
 
 ## Upcoming
 

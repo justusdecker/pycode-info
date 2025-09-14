@@ -1,6 +1,8 @@
 import os
 import math
 from .colors import RESET_COLOR, LANGUAGE_COLOR, convert_hex_to_escsq
+from .utils import set_dict_value
+
 FORBIDDEN_FOLDERS = ['.git','.vscode','.pytest','build','dist']
 
 BAR_LENGTH = 50
@@ -64,14 +66,7 @@ def convert_bytes(size_bytes):
     converted_size = size_bytes / (base ** unit_index)
     return f"{converted_size:.0f} {units[unit_index]}"
 
-def set_dict_value(dictionary, key, value) -> None:
-    """
-    Set a value in a dictionary, adding to it if the key already exists.
-    """
-    if key in dictionary:
-        dictionary[key] += value
-    else:
-        dictionary[key] = value
+
         
 def get_line_count(filepath: str) -> int:
     """

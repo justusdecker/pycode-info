@@ -1,6 +1,7 @@
 import subprocess
 import json
-
+import os
+from .utils import set_dict_value_list
 def run_flake8(file_path):
     try:
         result = subprocess.run(
@@ -16,18 +17,22 @@ def run_flake8(file_path):
         except json.JSONDecodeError:
             return {}
 
-import os
-for root, dirs, files in os.walk('./'):
-    for file in files:
-        if not file.endswith('.py'):
-            continue
-        full_path = os.path.join(root, file)
-        errors = run_flake8(full_path)
-
-        if errors:
-            print(f"Flake8-Error in {full_path}:")
-            for file, error_list in errors.items():
-                for err in error_list:
-                    print(f"- {err['line_number']}, {err['column_number']}: {err['code']} {err['text']}")
-        else:
-            print(f"No Flake8-Errors found in {full_path}.")
+def anayze_files():
+    ERRORS = {}
+    for root, _, files in os.walk('./'):
+        for file in files:
+            if not file.endswith('.py'): continue
+            full_path = os.path.join(root, file)
+            errors = run_flake8(full_path)
+            if errors:
+                for file, error_list in errors.items():
+                    for err in error_list:
+                        data = {
+                            "file": file,
+                            "line_number": err['line_number'],
+                            "column_number": err['column_number'],
+                            "text": err['text']
+                        }
+                        set_dict_value_list(ERRORS,full_path,data)
+    with open('flake8_report.json','w') as f:
+        json.dump(ERRORS,f,indent=4)
