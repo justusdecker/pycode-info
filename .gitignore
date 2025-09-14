@@ -1,2 +1,5 @@
 .vscode/*
 *.pyc
+.env
+dist/*
+src/pycode_info.egg-info/*
