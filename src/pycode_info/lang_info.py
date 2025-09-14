@@ -1,6 +1,6 @@
 import os
 import math
-from src.colors import RESET_COLOR, LANGUAGE_COLOR, convert_hex_to_escsq
+from .colors import RESET_COLOR, LANGUAGE_COLOR, convert_hex_to_escsq
 FORBIDDEN_FOLDERS = ['.git','.vscode','.pytest','build','dist']
 
 BAR_LENGTH = 50

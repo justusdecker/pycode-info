@@ -1,4 +1,3 @@
-__version__ = "0.1.1"
-import ccv
-import lang_info
-import flake8er
+__version__ = "0.1.8"
+from .ccv import analyze_all_files_in_workspace
+from .lang_info import print_language_summary
