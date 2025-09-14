@@ -1,8 +1,4 @@
 all:
-	python -m build
-	python -m twine upload --repository pypi dist/*
-push:
+
 	python ./tools/update_version.py
-	git add .
-	git commit -m "Update"
-	git push
+	
