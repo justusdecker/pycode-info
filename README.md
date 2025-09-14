@@ -4,10 +4,9 @@
 ## Code Statistics
 
 ### Language Percentage
-<img width="1100" height="225" alt="fancystuff" src="https://github.com/user-attachments/assets/65f29165-e20f-4347-b14e-157c24024935" />
+<img width="1120" height="223" alt="fancystuff2" src="https://github.com/user-attachments/assets/cce5a4da-c5ba-48ae-9628-b6af34bdfc5f" />
 
 ### Code Check
-
 <img width="1387" height="634" alt="fancystuff3" src="https://github.com/user-attachments/assets/74817ea5-34bd-4cb1-ab74-3feae6bc4880" />
 
 ### Cyclomatic Complexity Viewer
