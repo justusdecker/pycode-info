@@ -3,9 +3,7 @@ on:
     branches:
       - main
 env:
-  TWINE_USERNAME: __token__
-  TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  PACKAGE_NAME: pycode-info
+  PACKAGE_NAME: pycode_info
   OWNER: Justusdecker
 
 jobs:
