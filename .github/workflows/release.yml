@@ -52,11 +52,11 @@ jobs:
         id: get_version
         run: |
           PVERSION="versions.env"
-          echo "VERSION=$(python -c 'import src.pycode_info; print(src.pycode_info.__version__)')" >> $PVERSION
+          echo "VERSION=$(python -c 'import src.pycode_info; print(src.pycode_info.__version__)')" >> $GITHUB_ENV
       - name: Create GitHub Release
         id: create_release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo $PVERSION
-          gh release create v${{ env.PACKAGE_NAME }}-$PVERSION --title "${{ env.PACKAGE_NAME }}-v$PVERSION" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-$PVERSION" --draft=false --prerelease=false
+          gh release create v${{ env.PACKAGE_NAME }}-$VERSION --title "${{ env.PACKAGE_NAME }}-v${{ env.VERSION }}" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-${{ env.VERSION }}" --draft=false --prerelease=false
