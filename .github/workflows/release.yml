@@ -61,4 +61,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo $PVERSION
-          gh release create v${{ env.PACKAGE_NAME }}-$PVERSION --title "v${{ env.PACKAGE_NAME }}-$PVERSION" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-$PVERSION" --draft=false --prerelease=false
+          gh release create v${{ env.PACKAGE_NAME }}-$PVERSION --title "${{ env.PACKAGE_NAME }}-v$PVERSION" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-$PVERSION" --draft=false --prerelease=false
