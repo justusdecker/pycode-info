@@ -60,8 +60,22 @@ jobs:
         run: |
           gh release create v${{ env.PACKAGE_NAME }}-$VERSION --title "${{ env.PACKAGE_NAME }}-v${{ env.VERSION }}" --notes "Automated release of version ${{ env.PACKAGE_NAME }}-${{ env.VERSION }}" --draft=false --prerelease=false
 
-      - name: download Artifact
+  pypi_publish:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: release
+    permissions:
+      id-token: write # Für Trusted Publishing
+    steps:
+      - name: Download artifacts
         uses: actions/download-artifact@v4
-      
+        with:
+          name: dist
+          path: dist/
+
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.5.0
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # username: '__token__' # Nicht notwendig bei Trusted Publishing
+          password: ${{ secrets.PYPI_API_TOKEN }} # Das erstellte Secret
